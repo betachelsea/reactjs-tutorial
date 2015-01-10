@@ -1,0 +1,30 @@
+<!-- template.html -->
+<html>
+  <head>
+    <title>jQueryの場合</title>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  </head>
+  <body>
+
+    <ul>
+      <li>コーヒーミルク</li>
+      <li>ミルクプリン</li>
+      <li>ほっとココア</li>
+    </ul>
+  
+    <script type="text/javascript">
+      var changeName = function() {
+        var lists = $("ul > li");
+        for (var i=0; i<lists.length; i++) {
+          var li = $(lists[i]);
+          li.text(li.text().replace("ミルク", "牛乳"));
+        }
+      };
+      setTimeout(changeName, 3000);
+    </script>
+
+  </body>
+</html>

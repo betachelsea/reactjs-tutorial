@@ -1,0 +1,42 @@
+<!-- template.html -->
+<html>
+  <head>
+    <title>Reactの場合</title>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  </head>
+  <body>
+
+    <div id="content"></div>
+    <script type="text/jsx">
+      var data = ["コーヒーミルク", "ミルクプリン", "ほっとココア"];
+      var Lists = React.createClass({
+        render: function() {
+          var listNodes = this.props.items.map(function(item) {
+            return (<li>{item}</li>);
+          });
+          return (
+            <ul>{listNodes}</ul>
+          );
+        },
+        update: function() {
+          for (var i=0; i<data.length; i++) {
+            data[i] = data[i].replace("ミルク", "牛乳");
+          }
+          this.setState({items: data});
+        },
+        componentDidMount: function() {
+          setTimeout(this.update, 3000);
+        }
+      });
+      React.render(
+        <Lists items={data} />,
+        document.getElementById('content')
+      );
+
+    </script>
+
+  </body>
+</html>
